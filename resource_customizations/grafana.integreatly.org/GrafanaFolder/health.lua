@@ -20,8 +20,11 @@ function getStatusFromConditions(obj, hs)
             end
 
             if condition.status == "False" then
-              hs.status = "Degraded"
-              return hs
+              -- On ne marque comme Degraded que si la raison indique un échec réel
+              if condition.reason ~= nil and string.match(condition.reason, "Failed") then
+                hs.status = "Degraded"
+                return hs
+              end
             end
 
             if condition.status == "True" then
