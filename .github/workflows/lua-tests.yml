@@ -11,6 +11,7 @@ on:
     paths:
       - 'resource_customizations/**'
       - 'util/lua/**'
+  workflow_dispatch:
 
 jobs:
   test-lua:
