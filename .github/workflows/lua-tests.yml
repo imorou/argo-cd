@@ -22,7 +22,8 @@ jobs:
       - name: Install and Run golangci-lint
         run: |
           go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-          export PATH=\$PATH:\$(go env GOPATH)/bin
+          GOPATH=$(go env GOPATH)
+          export PATH=$PATH:$GOPATH/bin
           golangci-lint run
 
       - name: Run Lua Unit Tests
