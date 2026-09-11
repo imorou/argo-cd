@@ -22,7 +22,8 @@ jobs:
       - name: Set up golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
-          version: v1.60.3
+        version: v1.60.3
+        args: --timeout=5m
 
       - name: Run Lua Unit Tests
         run: go test -v ./util/lua/...
